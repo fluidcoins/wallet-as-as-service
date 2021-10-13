@@ -7,7 +7,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'fintech-demo',
+    title: 'Merchant Demo | Fluidcoins',
     htmlAttrs: {
       lang: 'en'
     },
@@ -15,11 +15,53 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      {
+        name: 'og:description',
+        content:
+          'Fluidcoins - The easiest way for African businesses to accept cryptocurrencies online',
+      },
+      { name: 'og:title', content: 'Fluidcoins' },
+      { name: 'og:url', content: 'http://fluidcoins.com/' },
+      { name: 'og:site_name', content: 'Fluidcoins' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      {
+        name: 'twitter:description',
+        content:
+          'Fluidcoins - The easiest way for African businesses to accept cryptocurrencies online',
+      },
+      { name: 'googlebot', content: 'index, follow' },
+      { name: 'robots', content: 'index, follow' },
+      { name: 'twitter:title', content: 'Fluidcoins' },
+      { name: 'twitter:url', content: 'http://fluidcoins.com/' },
+      {
+        name: 'twitter:image',
+        content:
+          'https://res.cloudinary.com/fluidcoins/image/upload/v1605870622/FLUIDCOINS_TRANSPARENT_wggr1x.png',
+      },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+      {
+        rel: 'apple-touch-icon',
+        size: '180x180',
+        href: '/favicon/apple-touch-icon.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon/favicon-16x16.png',
+      },
+      {
+        rel: 'manifest',
+        href: '/favicon/site.webmanifest',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
