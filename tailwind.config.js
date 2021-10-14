@@ -9,8 +9,8 @@ module.exports = {
   darkMode: false, // or 'media' or 'class'
   theme: {
     colors:{
-      primary: '#035AA6',
-      primaryLight: '#DCEEFE',
+      primary: '#5D5FEF',
+      primaryLight: '#E8E8FD',
       black: '#000000',
       grey: '#767676',
       lightGrey: '#C9D1D3',
@@ -60,6 +60,12 @@ module.exports = {
       primary: '0px 0px 0px 2px rgba(3, 90, 166, 0.25)'
     },
     extend: {
+      spacing: {
+        '84': '22rem'
+      },
+      fontSize: {
+        '3.5xl': '1.9375rem'
+      },
     },
   },
   variants: {

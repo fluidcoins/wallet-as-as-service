@@ -231,7 +231,7 @@
 
     .btn{
         @apply font-semibold text-base text-center p-4 rounded-md text-white cursor-pointer;
-        line-height: 1rem;
+        line-height: 1.06rem;
     }
 
     .btn-primary{
