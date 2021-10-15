@@ -61,6 +61,10 @@ export default {
         rel: 'manifest',
         href: '/favicon/site.webmanifest',
       },
+      {
+        rel: 'stylesheet',
+        href: 'https://res.cloudinary.com/fluidcoins/raw/upload/v1631563482/Typography/Circular-A/font-face_vgl7un.css'
+      }
     ],
   },
 

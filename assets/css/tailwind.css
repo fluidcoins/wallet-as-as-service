@@ -3,34 +3,6 @@
 @tailwind utilities;
 
 @layer base {
-    @font-face {
-        font-family: 'EuclidCircularA';
-        font-weight: 400;
-        src: url(/fonts/EuclidCircularA-Regular-WebS.woff2) format("woff2"),
-              url(/fonts/EuclidCircularA-Regular-WebS.woff) format("woff");
-    }
-
-    @font-face {
-      font-family: 'EuclidCircularA';
-      font-weight: 500;
-      src: url(/fonts/EuclidCircularA-Medium-WebS.woff2) format("woff2"),
-           url(/fonts/EuclidCircularA-Medium-WebS.woff) format("woff");
-  }
-
-    @font-face {
-        font-family: 'EuclidCircularA';
-        font-weight: 600;
-        src: url(/fonts/EuclidCircularA-Semibold-WebS.woff2) format("woff2"),
-              url(/fonts/EuclidCircularA-Semibold-WebS.woff) format("woff");
-    }
-
-
-    @font-face {
-      font-family: 'EuclidCircularA';
-      font-weight: 700;
-      src: url(/fonts/EuclidCircularA-Bold-WebS.woff2) format("woff2"),
-            url(/fonts/EuclidCircularA-Bold-WebS.woff) format("woff");
-  }
 
     * {
         font-family: 'EuclidCircularA', sans-serif;

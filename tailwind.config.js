@@ -66,6 +66,9 @@ module.exports = {
       fontSize: {
         '3.5xl': '1.9375rem'
       },
+      fontFamily: {
+        'sans': ['EuclidCircularA', 'sans-seriff']
+      }
     },
   },
   variants: {
