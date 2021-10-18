@@ -38,11 +38,6 @@ export default {
       loading: false
     }
   },
-  watch: {
-    email(value){
-      console.log(value)
-    }
-  },
   validations: {
     email: {
       required,
