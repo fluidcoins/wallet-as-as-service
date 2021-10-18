@@ -2,7 +2,7 @@
 <div>
   <div class="w-full flex">
     <div class="w-1/3 bg-primary h-screen">
-      <Payout class="mt-32" />
+      <img src="https://res.cloudinary.com/fluidcoins/image/upload/v1634553516/demo-site/payout-summary_qqo4hp.png" class="mt-32" />
       <p class="text-center text-white text-2xl mt-12 font-semibold">
         Payout in any cryptocurrency
       </p>
@@ -16,11 +16,8 @@
 </template>
 
 <script>
-import Payout from '~/assets/svg/payout.svg';
-
 export default {
   name: "AuthLayout",
-  components: {Payout}
 }
 </script>
 

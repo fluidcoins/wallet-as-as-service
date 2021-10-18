@@ -3,6 +3,7 @@
 @tailwind utilities;
 
 @layer base {
+    @import url('https://res.cloudinary.com/fluidcoins/raw/upload/v1631563482/Typography/Circular-A/font-face_vgl7un.css');
 
     * {
         font-family: 'EuclidCircularA', sans-serif;
