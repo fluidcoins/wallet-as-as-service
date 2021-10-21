@@ -1,7 +1,7 @@
 <template>
   <nuxt-link
     :class="{'bg-primaryLight': isActive}"
-    class="px-6 py-3 rounded flex items-center"
+    class="px-6 py-3 rounded flex items-center nav-item"
     :to="path"
   >
     <component :is="icon" />
@@ -56,6 +56,8 @@
   }
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="css" scoped>
+  .nav-item:not(:first-child) {
+    margin-top: 0.7rem;
+  }
 </style>
