@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen">
+  <div class="h-full">
     <nav class="pt-36">
       <SidebarItem 
         v-for="menu in menuItems"

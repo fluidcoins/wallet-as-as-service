@@ -132,7 +132,7 @@
     select {
       -webkit-appearance: none;
       -moz-appearance: none;
-      background-image: url('/images/select-chevron.svg');
+      background-image: url('/images/down-caret.svg');
       background-repeat: no-repeat;
       background-position-x: 92%;
       background-position-y: 50%;
