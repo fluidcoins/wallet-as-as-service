@@ -1,42 +1,21 @@
 <template>
-  <div class="pt-14">
-    <div class="mb-10 flex justify-end">
-      <PlainButton
-        label="Generate new address"
-        @click="viewModal('newAddress')"
-      />
-    </div>
+  <div class="pt-10">
     <h3 class="text-2xl mb-16">Address</h3>
     <select class="w-32 mb-12 border-0 bg-primaryLight300 text-base text-grey">
       <option value="all">All</option>
     </select>
     <Table :addresses="addresses" />
-    <Modal 
-      :show="globalModalConfig.newAddress"
-      :width="600"
-      @close="hideModal('newAddress')"
-    >
-      <NewAddress />
-    </Modal>
   </div>
 </template>
 
 <script>
 import Table from "~/components/Addresses/Table"
-import Modal from "~/components/Modal"
-import ModalMixin from "~/mixins/modal"
-import PlainButton from "~/components/Button/PlainButton"
-import NewAddress from "~/components/Addresses/NewAddress"
 
 export default {
   layout: 'default',
   components: {
     Table,
-    Modal,
-    PlainButton,
-    NewAddress
   },
-  mixins: [ModalMixin],
   data(){
     return {
       addresses: [
@@ -72,7 +51,8 @@ export default {
         },
       ],
       globalModalConfig: {
-        newAddress: false
+        newAddress: false,
+        detail: false
       }
     }
   }

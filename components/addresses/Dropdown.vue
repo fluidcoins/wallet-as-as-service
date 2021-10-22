@@ -51,6 +51,10 @@
   }
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="css" scoped>
+  .result{
+    background-image: url('/images/down-caret.svg');
+    background-repeat: no-repeat;
+    background-position: right 1rem center;
+  }
 </style>
