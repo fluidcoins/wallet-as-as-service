@@ -16,7 +16,7 @@
         >
           <td class="flex items-center text-sm">
             <span class="text-secondary underline">{{ address.address }}</span>
-            <Clipboard class="ml-3" />
+            <Clipboard class="ml-5" />
           </td>
           <td class="text-sm">
             {{ address.type }}

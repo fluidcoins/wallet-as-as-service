@@ -6,11 +6,6 @@
     <div class="flex-1 pl-6 pr-16 overflow-y-auto">
       <div class="pt-16">
         <Navbar />
-        <div class="pt-16 flex justify-end">
-          <PlainButton
-            label="Generate new address"
-          />
-        </div>
       </div>
       <Nuxt />
     </div>
@@ -20,14 +15,16 @@
 <script>
 import Navbar from "~/components/Navbar"
 import Sidebar from "~/components/Sidebar"
-import PlainButton from "~/components/Button/PlainButton"
+import ModalMixin from "~/mixins/modal"
+
 export default {
   name: 'DefaultLayout',
-  components:{
+  mixins: [ModalMixin],
+  components: {
     Navbar,
     Sidebar,
-    PlainButton
-  }
+  },
+  
 }
 </script>
 

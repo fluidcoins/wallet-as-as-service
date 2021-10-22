@@ -1,5 +1,5 @@
 <template>
-  <button class="px-6 py-3 bg-primary text-white rounded-md">
+  <button class="px-6 py-3 bg-primary text-white rounded-md" @click="$emit('click')">
     {{ label }}
   </button>
 </template>

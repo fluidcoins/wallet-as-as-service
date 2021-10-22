@@ -56,7 +56,7 @@ module.exports = {
       info: '0px 0px 0px 2px rgba(3, 90, 166, 0.25)',
       tableMenu: '0px 0px 0px 2px rgba(3, 90, 166, 0.25)',
       secondaryButton: '0px 0px 0px 2px rgba(3, 90, 166, 0.25)',
-      modal: '0px 0px 0px 2px rgba(3, 90, 166, 0.25)',
+      modal: '0px 0px 2px rgba(0, 0, 0, 0.15)',
       error: '0px 0px 0px 2px rgba(3, 90, 166, 0.25)',
       primary: '0px 0px 0px 2px rgba(3, 90, 166, 0.25)'
     },
