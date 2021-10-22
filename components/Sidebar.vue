@@ -5,7 +5,7 @@
         v-for="menu in menuItems"
         :key="menu.name"
         :iconType="menu.icon"
-        :path="menu.icon"
+        :path="menu.path"
         :name="menu.name"
       />
       <button class="px-6 py-3 rounded flex items-center">

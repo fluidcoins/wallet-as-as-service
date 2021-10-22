@@ -15,10 +15,10 @@
           v-for="transaction of transactions"
           :key="transaction.id"
         >
-          <td>{{ transaction.amount }} {{ transaction.currency }}</td>
-          <td class="text-secondary underline">{{ transaction.txId }}</td>
-          <td><Status :status="transaction.status" /></td>
-          <td>{{ transaction.date }}</td>
+          <td class="text-lg">{{ transaction.amount }} {{ transaction.currency }}</td>
+          <td class="text-secondary text-sm underline">{{ transaction.txId }}</td>
+          <td class="text-sm"><Status :status="transaction.status" /></td>
+          <td class="text-lg">{{ transaction.date }}</td>
         </tr>
       </tbody>
     </table>
