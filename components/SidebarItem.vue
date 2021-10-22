@@ -15,8 +15,8 @@
   export default {
     name: 'SidebarItem',
     components: {
-      Home: require('~/assets/svg/home.svg'),
-      Address: require('~/assets/svg/address.svg'),
+      Home: () => import('~/assets/svg/home.svg'),
+      Address: () => import('~/assets/svg/address.svg')
     },
     data() {
       return {}

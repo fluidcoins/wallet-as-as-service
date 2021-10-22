@@ -1,5 +1,5 @@
 <template>
-  <div :style="{width: width || '100%'}">
+  <div class="w-full">
     <label class="mb-3">{{ label }}</label>
     <div class="relative">
       <div @click="setDropdown" class="result rounded py-3 px-4 text-sm border border-grey">
