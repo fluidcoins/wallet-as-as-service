@@ -71,7 +71,11 @@ export default {
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
     '~/plugins/vuelidate',
+<<<<<<< HEAD
     '~/plugins/clipboard'
+=======
+    '~/plugins/filters'
+>>>>>>> f2b435e5c05a3c15c4f531c6d6d3a6e6e3a9e2e5
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components

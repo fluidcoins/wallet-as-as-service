@@ -11,11 +11,12 @@ module.exports = {
     colors:{
       primary: '#5D5FEF',
       primaryLight: '#E8E8FD',
+      primaryLight300: '#FAFAFF',
       black: '#000000',
       grey: '#767676',
       lightGrey: '#C9D1D3',
       white: "#ffffff",
-      secondary: '#465881',
+      secondary: '#035AA6',
       midnight: '#023E73',
       error: '#CF0808',
       whitesmoke: '#F6F7F9',
@@ -55,7 +56,7 @@ module.exports = {
       info: '0px 0px 0px 2px rgba(3, 90, 166, 0.25)',
       tableMenu: '0px 0px 0px 2px rgba(3, 90, 166, 0.25)',
       secondaryButton: '0px 0px 0px 2px rgba(3, 90, 166, 0.25)',
-      modal: '0px 0px 0px 2px rgba(3, 90, 166, 0.25)',
+      modal: '0px 0px 2px rgba(0, 0, 0, 0.15)',
       error: '0px 0px 0px 2px rgba(3, 90, 166, 0.25)',
       primary: '0px 0px 0px 2px rgba(3, 90, 166, 0.25)'
     },
