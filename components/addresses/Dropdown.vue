@@ -2,7 +2,7 @@
   <div class="w-full">
     <label class="mb-3">{{ label }}</label>
     <div class="relative">
-      <div @click="setDropdown" class="result rounded py-3 px-4 text-sm border border-grey">
+      <div class="result rounded py-3 px-4 text-sm border border-grey" @click="setDropdown">
         {{ value }}
       </div>
       <ul v-if="show" class="absolute z-10 transform translate-y-2 bg-white w-full rounded shadow-modal py-3">
@@ -22,6 +22,7 @@
 
 <script>
   export default {
+    name: 'DropDown',
     props: {
       label: {
         type: String,
@@ -29,6 +30,7 @@
       },
       options: {
         type: Array,
+        default: () => []
       }
     },
     data() {

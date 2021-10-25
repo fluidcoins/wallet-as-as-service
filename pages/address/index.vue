@@ -9,13 +9,13 @@
 </template>
 
 <script>
-import Table from "~/components/Addresses/Table"
+import Table from "~/components/addresses/Table"
 
 export default {
-  layout: 'default',
   components: {
     Table,
   },
+  layout: 'default',
   data(){
     return {
       addresses: [

@@ -38,12 +38,20 @@ import Navbar from '~/components/Navbar'
 import Sidebar from '~/components/Sidebar'
 import ModalMixin from '~/mixins/modal'
 import PlainButton from '~/components/Button/PlainButton'
-import AddressForm from '~/components/Addresses/AddressForm'
-import GeneratedAddress from '~/components/Addresses/GeneratedAddress'
+import AddressForm from '~/components/addresses/AddressForm'
+import GeneratedAddress from '~/components/addresses/GeneratedAddress'
 import Modal from '~/components/Modal'
 
 export default {
   name: 'DefaultLayout',
+  components: {
+    Navbar,
+    Sidebar,
+    PlainButton,
+    AddressForm,
+    GeneratedAddress,
+    Modal,
+  },
   mixins: [ModalMixin],
   data() {
     return {
@@ -52,14 +60,6 @@ export default {
         detail: false,
       },
     }
-  },
-  components: {
-    Navbar,
-    Sidebar,
-    PlainButton,
-    AddressForm,
-    GeneratedAddress,
-    Modal,
   },
   methods: {
     refresh() {

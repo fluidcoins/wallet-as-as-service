@@ -12,10 +12,10 @@
 import Table from "~/components/transactions/Table"
 
 export default {
-  layout: 'default',
   components: {
     Table,
   },
+  layout: 'default',
   data(){
     return {
       transactions: [

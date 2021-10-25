@@ -5,25 +5,25 @@
         <h3 class="text-2xl">Generate new address</h3>
         <p class="text-lg">Select the cryptocurrency and generate a new address</p>
       </div>
-      <Dropdown @changeOption="changeCrypto" label="Select Crypto" :options="cryptoOptions" />
+      <Dropdown label="Select Crypto" :options="cryptoOptions" @changeOption="changeCrypto" />
       <div class="mb-10"></div>
-      <Dropdown @changeOption="changeNetwork" label="Select network" :options="networkOptions" />
+      <Dropdown label="Select network" :options="networkOptions" @changeOption="changeNetwork" />
       <div class="mb-10"></div>
-      <PlainButton @click="$emit('done')" label="Generate new address" />
+      <PlainButton label="Generate new address" @click="$emit('done')" />
       <div class="mb-10"></div>
     </div>
     <p class="text-xs w-4/6 text-center text-black py-1 px-2 rounded bg-whitesmoke">
       You can only receive {{ crypto }} from the {{ network.toLowerCase() }} network to this address
     </p>
-  </div> 
+  </div>
 </template>
 
 <script>
-import Dropdown from "~/components/Addresses/Dropdown"
+import Dropdown from "~/components/addresses/Dropdown"
 import PlainButton from "~/components/Button/PlainButton"
 
 export default {
-  name: "addressMOdal",
+  name: "AddressModal",
   components: {
     Dropdown,
     PlainButton
