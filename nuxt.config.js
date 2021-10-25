@@ -70,7 +70,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
-    '~/plugins/vuelidate'
+    '~/plugins/vuelidate',
+    '~/plugins/clipboard'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -88,10 +89,16 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/toast'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {},
+
+  toast: {
+    position: 'top-right',
+    duration: 5000,
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
