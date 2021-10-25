@@ -1,7 +1,7 @@
 <template>
-  <div class="status flex items-center">
-    <span class="rounded-full p-1" :class="getClass"></span>
-    <div class="ml-1 font-medium">{{ status | capitalize }}</div>
+  <div class="status flex items-center w-full">
+    <span class="rounded-full w-3 h-3" :class="getClass"></span>
+    <p class="ml-1 font-medium text-black text-sm">{{ status | capitalize }}</p>
   </div>
 </template>
 
@@ -43,5 +43,4 @@
 </script>
 
 <style lang="scss" scoped>
-
 </style>

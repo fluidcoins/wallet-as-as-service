@@ -1,6 +1,6 @@
 <template>
   <div class="flex h-screen overflow-hidden">
-    <div class="px-4 h-full flex-none w-1/6">
+    <div class="px-4 h-full flex-none w-1/6 max-w-xs">
       <Sidebar />
     </div>
     <div class="flex-1 pl-6 pr-16 overflow-y-auto">
@@ -12,7 +12,7 @@
             @click="viewModal('newAddress')"
           />
         </div>
-        <Modal 
+        <Modal
           :show="globalModalConfig.newAddress"
           :width="600"
           @close="hideModal('newAddress')"
@@ -20,7 +20,7 @@
           <AddressForm @done="refresh" />
         </Modal>
 
-        <Modal 
+        <Modal
           :show="globalModalConfig.detail"
           :width="600"
           @close="hideModal('detail')"
@@ -34,23 +34,23 @@
 </template>
 
 <script>
-import Navbar from "~/components/Navbar"
-import Sidebar from "~/components/Sidebar"
-import ModalMixin from "~/mixins/modal"
-import PlainButton from "~/components/Button/PlainButton"
-import AddressForm from "~/components/Addresses/AddressForm"
-import GeneratedAddress from "~/components/Addresses/GeneratedAddress"
-import Modal from "~/components/Modal"
+import Navbar from '~/components/Navbar'
+import Sidebar from '~/components/Sidebar'
+import ModalMixin from '~/mixins/modal'
+import PlainButton from '~/components/Button/PlainButton'
+import AddressForm from '~/components/Addresses/AddressForm'
+import GeneratedAddress from '~/components/Addresses/GeneratedAddress'
+import Modal from '~/components/Modal'
 
 export default {
   name: 'DefaultLayout',
   mixins: [ModalMixin],
-  data(){
+  data() {
     return {
       globalModalConfig: {
         newAddress: false,
-        detail: false
-      }
+        detail: false,
+      },
     }
   },
   components: {
@@ -59,17 +59,15 @@ export default {
     PlainButton,
     AddressForm,
     GeneratedAddress,
-    Modal
+    Modal,
   },
   methods: {
     refresh() {
-      this.hideModal('newAddress');
-      this.viewModal('detail');
-    }
-  }
+      this.hideModal('newAddress')
+      this.viewModal('detail')
+    },
+  },
 }
 </script>
 
-<style lang="css" scoped>
-  
-</style>
+<style lang="css" scoped></style>

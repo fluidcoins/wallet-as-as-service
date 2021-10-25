@@ -134,7 +134,7 @@
       -moz-appearance: none;
       background-image: url('/images/down-caret.svg');
       background-repeat: no-repeat;
-      background-position-x: 92%;
+      background-position-x: 87%;
       background-position-y: 50%;
     }
     select.small{
@@ -269,6 +269,10 @@
 
     .layout{
         min-height: 100vh;
+    }
+
+    .select {
+      @apply w-28 py-0 px-3 h-10 mb-12 border-0 bg-primaryLight300 text-base text-grey;
     }
 
     /* .btn-disabled{

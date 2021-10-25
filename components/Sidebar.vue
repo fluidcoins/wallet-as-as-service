@@ -1,53 +1,46 @@
 <template>
   <div class="h-full">
     <nav class="pt-36">
-      <SidebarItem 
-        v-for="menu in menuItems"
+      <SidebarItem
+        v-for="(menu, i) in menuItems"
         :key="menu.name"
         :iconType="menu.icon"
         :path="menu.path"
         :name="menu.name"
+        :index="i"
       />
-      <button class="px-6 py-3 rounded flex items-center">
+      <button class="px-6 py-3 rounded w-full flex items-center justify-center">
         <Logout />
-        <span class="ml-6">Logout</span>
+        <span class="ml-6 text-xl font-medium">Logout</span>
       </button>
     </nav>
   </div>
 </template>
 
 <script>
-import Logout from "~/assets/svg/logout.svg"
+import Logout from '~/assets/svg/logout.svg'
 export default {
   name: 'Sidebar',
   components: {
-    Logout
+    Logout,
   },
   data() {
     return {
       menuItems: [
         {
-          name: "Home",
-          path: "/home",
-          icon: "Home"
+          name: 'Home',
+          path: '/home',
+          icon: 'Home',
         },
         {
-          name: "Address",
-          path: "/address",
-          icon: "Address"
-        }
+          name: 'Address',
+          path: '/address',
+          icon: 'Address',
+        },
       ],
-      actionItems: [
-        {
-          name: 'Logout',
-          icon: 'Logout'
-        }
-      ]
     }
-  }
+  },
 }
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>

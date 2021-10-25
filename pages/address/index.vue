@@ -1,7 +1,7 @@
 <template>
   <div class="pt-10">
     <h3 class="text-2xl mb-16">Address</h3>
-    <select class="w-32 mb-12 border-0 bg-primaryLight300 text-base text-grey">
+    <select class="select">
       <option value="all">All</option>
     </select>
     <Table :addresses="addresses" />

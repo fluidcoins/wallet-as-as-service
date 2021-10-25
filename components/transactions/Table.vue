@@ -3,10 +3,10 @@
     <table class="table-fixed w-full">
       <thead class="bg-whitesmoke">
         <tr>
-          <th class="one-fifth">Amount</th>
-          <th class="two-fifth">TXid</th>
-          <th class="one-fifth">Status</th>
-          <th class="one-fifth">Date</th>
+          <th class="one-fifth font-medium">Amount</th>
+          <th class="two-fifth font-medium">TXid</th>
+          <th class="one-fifth font-medium">Status</th>
+          <th class="one-fifth font-medium">Date</th>
         </tr>
       </thead>
       <tbody>

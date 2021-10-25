@@ -4,7 +4,7 @@
       <thead class="bg-whitesmoke">
         <tr>
           <th class="w-3/5 font-medium">Address</th>
-          <th class="w-1/5 font-medium">Address Type</th>
+          <th class="w-25 font-medium">Address Type</th>
           <th class="w-1/5 font-medium">Date</th>
         </tr>
       </thead>
@@ -29,21 +29,20 @@
 </template>
 
 <script>
-import Clipboard from "~/assets/svg/clipboard.svg"
+import Clipboard from '~/assets/svg/clipboard.svg'
 
 export default {
   name: 'Table',
   components: {
-    Clipboard
+    Clipboard,
   },
   props: {
     addresses: {
       type: Array,
-      default: () => []
-    }
-  }
+      default: () => [],
+    },
+  },
 }
 </script>
 
-<style lang="css" scoped>
-</style>
+<style lang="css" scoped></style>
