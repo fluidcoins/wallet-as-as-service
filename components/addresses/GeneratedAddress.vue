@@ -31,7 +31,7 @@
           >
             <p class="flex-1 text-sm text-secondary whitespace-pre-wrap break" id="bar">1MJqZvCjzh1nYFJ1tYPcbSpkhN23tK2dYz</p>
 
-            <Copy class="flex-none" role="button" />
+            <Copy class="flex-none" role="button" @click="copy('1MJqZvCjzh1nYFJ1tYPcbSpkhN23tK2dYz')" />
           </div>
         </div>
         <div class="flex items-center justify-center">
@@ -44,9 +44,11 @@
 
 <script>
 import Copy from "~/assets/svg/copy.svg"
+import CopyToClipboardMixin from "~/mixins/copy-to-clipboard"
 
 export default {
   name: 'GeneratedAddress',
+  mixins: [CopyToClipboardMixin],
   components: {
     Copy
   }

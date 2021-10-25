@@ -16,7 +16,7 @@
         >
           <td class="flex items-center text-sm">
             <span class="text-secondary underline">{{ address.address }}</span>
-            <Clipboard class="ml-5" />
+            <Clipboard class="ml-5" @click="copy(address.address)" />
           </td>
           <td class="text-sm">
             {{ address.type }}
@@ -29,13 +29,15 @@
 </template>
 
 <script>
-import Clipboard from '~/assets/svg/clipboard.svg'
+import Clipboard from '~/assets/svg/clipboard.svg';
+import ClipboardCopyMixin from "~/mixins/copy-to-clipboard"
 
 export default {
   name: 'Table',
   components: {
     Clipboard,
   },
+  mixins: [ClipboardCopyMixin],
   props: {
     addresses: {
       type: Array,

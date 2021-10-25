@@ -2,7 +2,8 @@ export default {
   name: 'CopyToClipboardMixin',
   methods: {
     copy(value) {
-      this.
+      this.$clipboard(value);
+      this.$toast.info('Copied to clipboard')
     }
   }
 }
