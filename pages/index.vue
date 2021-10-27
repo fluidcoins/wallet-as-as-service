@@ -4,12 +4,12 @@
     <p class="text-center mb-14">Login to your account</p>
     <label for="email">Email</label>
     <Input 
-      id="email"
+      id="secretKey"
       v-model="email"
-      label="email"                        
-      type="email"
+      label="secretKey"                        
+      type="text"
       :error="error"
-      :v="$v.email"
+      :v="$v.secretKey"
     />
     <div class="mt-10"></div>
     <Button 
@@ -23,7 +23,7 @@
 
 <script>
 import { mapMutations } from "vuex";
-import { email, required } from "vuelidate/lib/validators"
+import { required } from "vuelidate/lib/validators"
 import Input from "~/components/Input"
 import Button from "~/components/Button/Button"
 
@@ -43,16 +43,19 @@ export default {
   layout: 'auth',
   data() {
     return {
-      email: "",
+      secretKey: "",
       apiState: API_STATE_ENUM.IDLE,
       API_STATE_ENUM,
       loading: false
     }
   },
   validations: {
-    email: {
+    secretKey: {
       required,
-      email
+      isTestKey: (value) => {
+        let regex = /^sk_test_[a-z0-9]+/
+        return regex.test(value)
+      }
     }
   },
   methods: {
@@ -66,14 +69,11 @@ export default {
       this.apiState = API_STATE_ENUM.PENDING;
 
       try{
-        const {email, password} = this;
-        const payload = {email, password};
-        const { data } = await this.$api.auth.login(payload);
-        const {token, user} = data;
-        this.$axios.setToken(`Bearer ${token}`)
-        this[SET_AUTH]({token, user})
+        const {secretKey} = this;
+        this.$axios.setToken(`Bearer ${secretKey}`)
+        this[SET_AUTH]({secretKey}) 
 
-        this.$utils.setCookie(AUTH_DATA, {token, user})
+        this.$utils.setCookie(AUTH_DATA, {secretKey})
 
         this.apiState = API_STATE_ENUM.RESOLVED;
 
@@ -95,7 +95,7 @@ export default {
   computed: {
     
     error() {
-      return this.$v.email.$error ? 'Email is invalid' : ''
+      return this.$v.secretKey.$error ? 'Key is invalid' : ''
     }
   }
 }
