@@ -6,9 +6,9 @@ export const state = () => ({
 })
 
 export const getters = {
-  loggedIn() {
+  loggedIn(state) {
     const { auth } = state;
-    return !!(auth & auth?.secretKey)
+    return auth && !!auth.secretKey
   }
 }
 
