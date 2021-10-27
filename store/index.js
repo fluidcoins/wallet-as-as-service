@@ -15,6 +15,6 @@ export const actions = {
   [LOGOUT]() {
     this.$axios.setToken(false);
     this.$cookiz.removeAll();
-    this.app.router.push('/')
+    // this.app.router.push('/')
   }
 }

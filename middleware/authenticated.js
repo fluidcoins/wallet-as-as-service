@@ -1,6 +1,6 @@
 import { LOGOUT } from "~/services/actionTypes";
 
-export default function ({ app, store, route, redirect }) {
+export default function ({ store, route, redirect }) {
   const { loggedIn } = store.getters
   const { path } = route
   const redirectPath = path === '/' ? '' : path
