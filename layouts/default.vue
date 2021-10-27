@@ -44,6 +44,7 @@ import Modal from '~/components/Modal'
 
 export default {
   name: 'DefaultLayout',
+  middleware: 'authenticated',
   components: {
     Navbar,
     Sidebar,

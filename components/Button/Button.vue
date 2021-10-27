@@ -1,5 +1,5 @@
 <template>
-  <button :type="type" class="w-full btn btn-primary" :class="{'btn-disabled': invalid}" :disabled="invalid">
+  <button :type="type" class="w-full btn btn-primary" :class="{'btn-disabled': invalid}">
     <template v-if="!loading">
       {{ label }}
     </template>
@@ -40,6 +40,12 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
+<style lang="css" scoped>
+  .spin {
+    animation: spin 2s linear infinite;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 </style>

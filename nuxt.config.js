@@ -72,7 +72,9 @@ export default {
   plugins: [
     '~/plugins/vuelidate',
     '~/plugins/clipboard',
-    '~/plugins/filters'
+    '~/plugins/filters',
+    '~/plugins/axios',
+    '~/plugins/utils'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -80,10 +82,9 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
+    ['cookie-universal-nuxt', { alias: 'cookiz' }]
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -94,7 +95,9 @@ export default {
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseUrl: process.env.BASE_URL
+  },
 
   toast: {
     position: 'top-right',
