@@ -1,6 +1,7 @@
 import { LOGOUT } from "~/services/actionTypes";
 
 export default function ({ store, route, redirect }) {
+  console.log('isAuthenticated called')
   const { loggedIn } = store.getters
   const { path } = route
   const redirectPath = path === '/' ? '' : path

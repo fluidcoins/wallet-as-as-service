@@ -2,10 +2,10 @@
   <form class="w-84 mx-auto mt-48" @submit.prevent="handleSubmit">
     <h1 class="mb-2 text-center text-3.5xl">Login</h1>
     <p class="text-center mb-14">Login to your account</p>
-    <label for="email">Email</label>
+    <label for="email">Secret Key</label>
     <Input 
       id="secretKey"
-      v-model="email"
+      v-model="secretKey"
       label="secretKey"                        
       type="text"
       :error="error"
@@ -46,14 +46,13 @@ export default {
       secretKey: "",
       apiState: API_STATE_ENUM.IDLE,
       API_STATE_ENUM,
-      loading: false
     }
   },
   validations: {
     secretKey: {
       required,
       isTestKey: (value) => {
-        let regex = /^sk_test_[a-z0-9]+/
+        const regex = /^sk_test_[a-z0-9]+/
         return regex.test(value)
       }
     }
@@ -62,7 +61,7 @@ export default {
     ...mapMutations([
       SET_AUTH
     ]),
-    async handleSubmit(){
+    handleSubmit(){
       this.$v.$touch();
 
       if(this.$v.invalid || this.apiState === API_STATE_ENUM.PENDING) return;
@@ -77,12 +76,7 @@ export default {
 
         this.apiState = API_STATE_ENUM.RESOLVED;
 
-        const query = this.$route.query
-        const path = query.redirectTo || '/home'
-        if (query.redirectTo) {
-          delete query.redirectTo
-        }
-        this.$router.push({ path, query })
+        this.$router.push('/home')
 
       }catch(error) {
         this.apiState = API_STATE_ENUM.REJECTED;
