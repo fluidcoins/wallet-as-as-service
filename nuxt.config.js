@@ -84,7 +84,6 @@ export default {
   buildModules: [
     '@nuxtjs/eslint-module',
     '@nuxtjs/tailwindcss',
-    ['cookie-universal-nuxt', { alias: 'cookiz' }]
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules

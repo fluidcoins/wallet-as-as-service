@@ -51,7 +51,7 @@ export default {
   validations: {
     secretKey: {
       required,
-      isTestKey: (value) => {
+      isValidSecretKey: (value) => {
         const regex = /^sk_test_[a-z0-9]+/
         return regex.test(value)
       }
@@ -72,8 +72,6 @@ export default {
         this.$axios.setToken(`Bearer ${secretKey}`)
         this[SET_AUTH]({secretKey}) 
 
-        this.$utils.setCookie(AUTH_DATA, {secretKey})
-
         this.apiState = API_STATE_ENUM.RESOLVED;
 
         this.$router.push('/home')
@@ -89,7 +87,7 @@ export default {
   computed: {
     
     error() {
-      return this.$v.secretKey.$error ? 'Key is invalid' : ''
+      return this.$v.secretKey.$error ? 'Test Secret key is not valid' : ''
     }
   }
 }

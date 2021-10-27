@@ -7,17 +7,6 @@ export default (context) => ({
 
     return { message: error.message, data: undefined };
   },
-  setCookie(key, value, option) {
-    if (process.env.FLUIDCOINS_ENV === "development") {
-      const opts = {
-        ...option,
-        secure: true,
-        sameSite: "strict",
-        path: "/",
-      };
-      context.$cookiz.set(key, value, opts);
-    }
-  },
   copy(value){
     context.app.$clipboard(value)
     context.app.$toast.info('Copied to clipboard!')
