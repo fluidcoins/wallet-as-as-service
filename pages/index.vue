@@ -2,7 +2,7 @@
   <form class="w-84 mx-auto mt-48" @submit.prevent="handleSubmit">
     <h1 class="mb-2 text-center text-3.5xl">Login</h1>
     <p class="text-center mb-14">Login to your account</p>
-    <label for="email">Email</label>
+    <label for="email">Secret Key</label>
     <Input 
       id="secretKey"
       v-model="email"
@@ -53,7 +53,7 @@ export default {
     secretKey: {
       required,
       isTestKey: (value) => {
-        let regex = /^sk_test_[a-z0-9]+/
+        const regex = /^sk_test_[a-z0-9]+/
         return regex.test(value)
       }
     }
@@ -62,7 +62,7 @@ export default {
     ...mapMutations([
       SET_AUTH
     ]),
-    async handleSubmit(){
+    handleSubmit(){
       this.$v.$touch();
 
       if(this.$v.invalid || this.apiState === API_STATE_ENUM.PENDING) return;
