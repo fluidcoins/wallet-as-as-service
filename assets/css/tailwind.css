@@ -1,0 +1,380 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    @import url('https://res.cloudinary.com/fluidcoins/raw/upload/v1631563482/Typography/Circular-A/font-face_vgl7un.css');
+
+    * {
+        font-family: 'EuclidCircularA', sans-serif;
+        font-weight: 400;
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        box-sizing: border-box;
+        scroll-behavior: smooth;
+        @apply text-black;
+    }
+    html,
+    body {
+        overflow-x: hidden;
+        padding: 0px;
+        margin: 0px;
+        scroll-behavior: smooth;
+        @apply bg-white;
+    }
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6,
+    p {
+        margin: 0px;
+        padding: 0px;
+    }
+
+    ul,
+    li {
+        list-style: none;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    a {
+        text-decoration: none;
+        color: inherit;
+        @apply text-primary;
+    }
+
+    body{
+        font-family: 'EuclidCircularA', sans-serif;
+        font-weight: 400;
+        font-style: normal;
+    }
+    h1,h2,h3,h4,h5,h6,label, input, input::placeholder{
+        font-family: 'EuclidCircularA', sans-serif;
+    }
+    h1,h2, h5{
+        font-weight: 700;
+    }
+
+
+    h1 {
+      @apply text-5xl font-bold;
+    }
+    h2 {
+        font-size: 2.5rem;
+        line-height: 4rem;
+        @apply font-bold;
+    }
+
+    h3 {
+      font-size: 2rem;
+      line-height: 2.37rem;
+      @apply font-bold;
+    }
+
+    h4{
+        @apply text-2xl font-bold;
+    }
+
+    h5 {
+      @apply text-lg font-semibold;
+    }
+
+    h6 {
+      @apply text-base font-semibold
+    }
+
+    p{
+        font-weight: 400;
+        @apply text-lg text-grey;
+    }
+
+    .caption{
+      font-size: 0.75rem;
+      line-height: 1rem;
+      @apply font-normal;
+    }
+
+    .caption-2 {
+      font-size: 0.625rem;
+      line-height: 1rem;
+      @apply font-normal;
+    }
+
+    .nav-link-active {
+      stroke: #fff;
+      path {
+        stroke: #fff
+      }
+    }
+
+    /* .nav-link-inactive {
+      stroke: #465881;
+      path {
+        stroke: #465881
+      }
+    } */
+
+    label {
+      @apply text-black text-base mb-3;
+    }
+
+    input, select, textarea {
+      border-radius: 5px;
+      border: 0.5px solid #000000;
+      @apply p-4 text-xs text-black w-full;
+      box-sizing: border-box;
+      line-height: 120%;
+    }
+
+    select {
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background-image: url('/images/down-caret.svg');
+      background-repeat: no-repeat;
+      background-position-x: 87%;
+      background-position-y: 50%;
+    }
+    select.small{
+      background-position-x: 80%;
+    }
+
+    input:focus-within, textarea:focus-within{
+      box-shadow: 0px 0px 0px 2px rgba(3, 90, 166, 0.25);
+    }
+
+    /* input + svg > path {
+      stroke : #C9D1D3;
+    }
+    input:focus-within + svg > path {
+      stroke: #000000;
+    } */
+
+    input.error, select.error {
+      box-shadow: 0px 0px 0px 2px rgba(207, 8, 8, 0.25);
+
+      @apply border border-error;
+    }
+    textarea{
+        resize:none;
+    }
+    form {
+      @apply w-full;
+    }
+
+    .form-control {
+      @apply flex flex-col w-full;
+    }
+
+    .form-switch {
+      @apply relative select-none w-12 mr-2 leading-normal;
+    }
+
+    .form-switch-checkbox {
+      @apply hidden;
+    }
+
+    .form-switch-label {
+      @apply block overflow-hidden cursor-pointer bg-white border border-primary rounded-full h-6;
+
+      transition: background-color 0.2s ease-in;
+    }
+
+    .form-switch-label:before {
+      @apply absolute block bg-white w-5 h-5 border border-primary rounded-full -ml-1;
+
+      right: 50%;
+      top: 6.5%;
+      content: "";
+      transition: all 0.2s ease-in;
+    }
+    .form-switch-checkbox:checked + .form-switch-label,
+    .form-switch-checkbox:checked + .form-switch-label:before {
+
+    }
+
+    .form-switch-checkbox:checked + .form-switch-label {
+        @apply bg-white;
+    }
+    .form-switch-checkbox:checked + .form-switch-label:before {
+      @apply right-1 border-white bg-primary;
+    }
+
+    .btn{
+        @apply font-semibold text-base text-center p-4 rounded-md text-white cursor-pointer;
+        line-height: 1.06rem;
+    }
+
+    .btn-primary{
+        @apply bg-primary text-white;
+    }
+
+
+    .btn-primary:hover {
+      @apply bg-secondary;
+    }
+    .btn-primary:active {
+      @apply bg-midnight;
+    }
+
+    .btn-secondary{
+      @apply bg-secondary text-white shadow-secondaryButton;
+    }
+
+    .btn:disabled, .btn-disabled{
+      @apply bg-lightGrey;
+    }
+
+
+    .btn-outlined {
+      padding-top: 10px;
+      padding-bottom: 10px;
+      @apply box-border border border-primary text-primary text-base;
+    }
+    .btn-outlined:hover{
+      @apply border-secondary text-secondary;
+    }
+    .btn-outlined:active{
+      @apply border-midnight text-midnight;
+    }
+    /* .btn-darkPrimary{
+        @apply bg-darkPrimary text-white;
+    } */
+    .btn-accent {
+        @apply border border-grey;
+    }
+
+    .btn-error {
+      @apply bg-error shadow-error
+    }
+
+    .btn-success {
+      @apply bg-success text-white;
+    }
+
+      .btn--small {
+        line-height: 1rem;
+        @apply px-4 py-4;
+    }
+
+    .btn--medium {
+      @apply px-4 py-5;
+    }
+
+    .btn--large {
+      @apply px-4 py-6;
+    }
+
+    .layout{
+        min-height: 100vh;
+    }
+
+    .select {
+      @apply w-28 py-0 px-3 h-10 mb-12 border-0 bg-primaryLight300 text-base text-grey;
+    }
+
+    /* .btn-disabled{
+        @apply bg-lightPrimary text-white;
+    } */
+
+    pre {
+        @apply text-base font-normal w-full;
+    }
+    th,td {
+      @apply text-left py-3;
+    }
+    th:first-child, td:first-child{
+      @apply pl-5;
+    }
+
+    th:last-child, td:last-child{
+      @apply pr-5;
+    }
+
+    .fade-enter-active {
+        transition: opacity 0.5s;
+      }
+
+      .fade-enter {
+        opacity: 0;
+      }
+
+
+      /* badges */
+
+      .status {
+        border-radius: 20px;
+        @apply text-sm py-1 text-center w-20;
+      }
+
+      .status--failed{
+        @apply bg-errorLight text-error;
+      }
+
+      .status--success {
+        @apply bg-successLight text-success
+      }
+
+      .status--pending {
+        @apply bg-pendingLight text-pending
+      }
+
+      .badge {
+        border-radius: 20px;
+        @apply text-sm py-1 text-center w-auto inline-block px-4;
+      }
+
+      .badge--bitcoin{
+        @apply  bg-bitcoinLight text-bitcoinSolid
+      }
+
+      .badge--usdt {
+        @apply bg-usdtLight text-usdtSolid
+      }
+
+      .badge--usdc {
+        @apply bg-usdcLight text-usdcSolid
+      }
+
+      .badge--xrp {
+        @apply bg-xrpLight text-xrpSolid
+      }
+
+      .badge--busd {
+        @apply bg-busdLight text-busdSolid
+      }
+
+      .badge--eth {
+        @apply bg-ethLight text-ethSolid
+      }
+
+      .badge--tron{
+        @apply bg-tronLight text-tronSolid
+      }
+
+      .badge--ltc {
+        @apply bg-ltcLight text-ltcSolid
+      }
+
+      .badge--doge {
+        @apply bg-dogeLight text-dogeSolid
+      }
+
+  }
+
+  @layer utilities {
+    @variants responsive {
+      /* Chrome, Safari and Opera */
+      /* https://github.com/tailwindlabs/tailwindcss/discussions/2394#discussioncomment-432070 */
+      .no-scrollbar::-webkit-scrollbar {
+        display: none;
+      }
+
+      .no-scrollbar {
+        -ms-overflow-style: none;  /* IE and Edge */
+        scrollbar-width: none;  /* Firefox */
+      }
+    }
+  }

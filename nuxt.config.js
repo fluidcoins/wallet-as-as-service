@@ -7,7 +7,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'fintech-demo',
+    title: 'Merchant Demo | Fluidcoins',
     htmlAttrs: {
       lang: 'en'
     },
@@ -15,11 +15,53 @@ export default {
       { charset: 'utf-8' },
       { name: 'viewport', content: 'width=device-width, initial-scale=1' },
       { hid: 'description', name: 'description', content: '' },
-      { name: 'format-detection', content: 'telephone=no' }
+      {
+        name: 'og:description',
+        content:
+          'Fluidcoins - The easiest way for African businesses to accept cryptocurrencies online',
+      },
+      { name: 'og:title', content: 'Fluidcoins' },
+      { name: 'og:url', content: 'http://fluidcoins.com/' },
+      { name: 'og:site_name', content: 'Fluidcoins' },
+      { name: 'twitter:card', content: 'summary_large_image' },
+      {
+        name: 'twitter:description',
+        content:
+          'Fluidcoins - The easiest way for African businesses to accept cryptocurrencies online',
+      },
+      { name: 'googlebot', content: 'index, follow' },
+      { name: 'robots', content: 'index, follow' },
+      { name: 'twitter:title', content: 'Fluidcoins' },
+      { name: 'twitter:url', content: 'http://fluidcoins.com/' },
+      {
+        name: 'twitter:image',
+        content:
+          'https://res.cloudinary.com/fluidcoins/image/upload/v1605870622/FLUIDCOINS_TRANSPARENT_wggr1x.png',
+      },
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
-    ]
+      {
+        rel: 'apple-touch-icon',
+        size: '180x180',
+        href: '/favicon/apple-touch-icon.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '32x32',
+        href: '/favicon/favicon-32x32.png',
+      },
+      {
+        rel: 'icon',
+        type: 'image/png',
+        sizes: '16x16',
+        href: '/favicon/favicon-16x16.png',
+      },
+      {
+        rel: 'manifest',
+        href: '/favicon/site.webmanifest',
+      },
+    ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css
@@ -28,6 +70,11 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/vuelidate',
+    '~/plugins/clipboard',
+    '~/plugins/filters',
+    '~/plugins/axios',
+    '~/plugins/utils'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -35,9 +82,7 @@ export default {
 
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
-    // https://go.nuxtjs.dev/eslint
     '@nuxtjs/eslint-module',
-    // https://go.nuxtjs.dev/tailwindcss
     '@nuxtjs/tailwindcss',
   ],
 
@@ -45,12 +90,30 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
+    '@nuxtjs/toast'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
-  axios: {},
+  axios: {
+    baseUrl: process.env.BASE_URL
+  },
+
+  toast: {
+    position: 'top-right',
+    duration: 5000,
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extend: (config) => {
+      const svgRule = config.module.rules.find(rule => rule.test.test('.svg'));
+
+      svgRule.test = /\.(png|jpe?g|gif|webp)$/;
+
+      config.module.rules.push({
+        test: /\.svg$/,
+        use: ['babel-loader', 'vue-svg-loader'],
+      });
+    },
   }
 }
