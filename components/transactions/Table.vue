@@ -15,7 +15,7 @@
           v-for="transaction of transactions"
           :key="transaction.id"
         >
-          <td class="text-lg">{{ transaction.amount }} {{ transaction.currency }}</td>
+          <td class="text-lg">{{ transaction.amount | naira }}</td>
           <td class="text-secondary text-sm underline">{{ transaction.payment_link_id }}</td>
           <td class="text-sm"><Status :status="transaction.status" /></td>
           <td class="text-lg">{{ transaction.created_at | dateString }}</td>

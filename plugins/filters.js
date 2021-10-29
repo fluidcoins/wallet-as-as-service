@@ -14,3 +14,16 @@ Vue.filter('dateString', function (value) {
 
   return format(new Date(value), "do MMMM, yyyy");
 });
+
+Vue.filter('naira', (amountInKobo) => {
+  let amount = 0;
+
+  if (amountInKobo > 0) {
+    amount = amountInKobo / 100;
+  }
+
+  return new Intl.NumberFormat('en-US', {
+    style: 'currency',
+    currency: 'NGN',
+  }).format(amount);
+});
