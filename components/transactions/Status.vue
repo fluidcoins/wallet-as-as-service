@@ -24,7 +24,7 @@
           case 'failed':
           case 'expired':
           case 'disabled':{
-            return 'failed'
+            return 'error'
           }
           case 'pending':
           case 'unpaid': {

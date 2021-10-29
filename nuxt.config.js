@@ -74,7 +74,8 @@ export default {
     '~/plugins/clipboard',
     '~/plugins/filters',
     '~/plugins/axios',
-    '~/plugins/utils'
+    '~/plugins/utils',
+    '~/plugins/repositories'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
