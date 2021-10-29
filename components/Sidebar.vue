@@ -48,7 +48,7 @@ export default {
       LOGOUT
     ]),
     _logout() {
-      this.logout();
+      // this.logout();
       this.$router.push('/')
     }
   }

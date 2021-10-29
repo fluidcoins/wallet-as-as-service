@@ -13,7 +13,8 @@ export const getters = {
 }
 
 export const actions = {
-  [LOGOUT]() {
+  [LOGOUT]({state}) {
+    console.log(state)
     this.$axios.setToken(false);
   }
 }
