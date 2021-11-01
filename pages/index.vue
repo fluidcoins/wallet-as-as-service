@@ -28,17 +28,13 @@ import Input from "~/components/Input"
 import Button from "~/components/Button/Button"
 
 import {API_STATE_ENUM} from "~/services/constants.js"
-import { SET_AUTH, AUTH_DATA } from "~/services/mutationTypes.js"
+import { SET_AUTH } from "~/services/mutationTypes.js"
 
 
 export default {
   components: {
     Input,
     Button
-  },
-  middleware({ store, redirect }) {
-    const isLoggedIn = !!store.getters.loggedIn;
-    if(isLoggedIn) return redirect('/home')
   },
   layout: 'auth',
   data() {
