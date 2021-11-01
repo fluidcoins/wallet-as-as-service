@@ -17,7 +17,7 @@
           :width="600"
           @close="hideModal('newAddress')"
         >
-          <AddressForm @done="refresh" />
+          <AddressForm @done="refresh" @close="hideModal('newAddress')" />
         </Modal>
 
         <Modal
@@ -28,7 +28,7 @@
           <GeneratedAddress />
         </Modal>
       </div>
-      <Nuxt />
+      <Nuxt ref="page" />
     </div>
   </div>
 </template>
@@ -65,8 +65,14 @@ export default {
   methods: {
     refresh() {
       this.hideModal('newAddress')
-      this.viewModal('detail')
+      this.fetchAddresses()
     },
+    fetchAddresses() {
+      const { path } = this.$route;
+      if(path === '/address') {
+        this.$refs.page.$children[0].fetchAddresses()
+      }
+    }
   },
 }
 </script>

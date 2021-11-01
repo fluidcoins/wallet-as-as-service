@@ -74,7 +74,6 @@ export default {
 
       try {
         const { data } = await this.$api.address.all(params);
-        console.log(data)
         const {addresses, meta} = data;
         this.addresses = addresses;
         this.meta = meta.paging;
