@@ -28,13 +28,11 @@
 
 <script>
 import Status from "./Status.vue";
-import PaginationLoader from "./PaginationLoader.vue"
 
 export default {
   name: 'Table',
   components: {
     Status,
-    PaginationLoader
   },
   props: {
     transactions: {

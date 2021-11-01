@@ -4,12 +4,31 @@
     <select class="select">
       <option value="all">All</option>
     </select>
-    <Table :addresses="addresses" />
+    <Table :addresses="addresses" :loading="apiState === API_STATE_ENUM.PENDING" />
+
+    <template v-if="apiState === API_STATE_ENUM.RESOLVED">
+      <template v-if="addresses.length > 0">
+        <Pagination
+          class="mt-auto pb-12"
+          :per-page="meta.per_page"
+          :current-page="meta.page"
+          :total="meta.total"
+          @update-page="fetchAddresses"
+        />
+      </template>
+      <template v-else>
+        <EmptyBoundary
+          title="No addresses yet"
+          description="You have no addresses yet"
+        />
+      </template>
+    </template>
   </div>
 </template>
 
 <script>
 import Table from "~/components/addresses/Table"
+import { API_STATE_ENUM } from "~/services/constants"
 
 export default {
   components: {
@@ -18,41 +37,39 @@ export default {
   layout: 'default',
   data(){
     return {
-      addresses: [
-        {
-          type: 'Bitcoin',
-          id: 1,
-          address: '1MJqZvCjzh1nYFJ1tYPcbSpkhN23tK2dYz',
-          date: 'Oct 25, 2019'
-        },
-         {
-          type: 'Bitcoin',
-          id: 2,
-          address: '1MJqZvCjzh1nYFJ1tYPcbSpkhN23tK2dYz',
-          date: 'May 12, 2019'
-        },
-         {
-          type: 'Bitcoin',
-          id: 3,
-          address: '1MJqZvCjzh1nYFJ1tYPcbSpkhN23tK2dYz',
-          date: 'Mar 06, 2018'
-        },
-         {
-          type: 'Bitcoin',
-          id: 4,
-          address: '1MJqZvCjzh1nYFJ1tYPcbSpkhN23tK2dYz',
-          date: 'Dec 02, 2018'
-        },
-        {
-          type: 'Bitcoin',
-          id: 5,
-          address: '1MJqZvCjzh1nYFJ1tYPcbSpkhN23tK2dYz',
-          date: 'Oct 24, 2018'
-        },
-      ],
+      addresses: [],
+      filter: '',
+      filterOptions: [],
+      apiState: API_STATE_ENUM.IDLE,
+      API_STATE_ENUM,
       globalModalConfig: {
         newAddress: false,
         detail: false
+      }
+    }
+  },
+  mounted() {
+    this.fetchAddresses()
+  },
+  methods: {
+    async fetchAddresses(params={}) {
+      if(this.filter) {
+        params.coin_id = this.filter
+      }
+
+      this.apiState = API_STATE_ENUM.PENDING;
+
+      try {
+        const { data } = await this.$api.address.all(params);
+        console.log(data)
+        const {addresses, meta} = data;
+        this.addresses = addresses;
+        this.meta = meta.paging;
+        this.apiState = API_STATE_ENUM.RESOLVED;
+      }catch (error) {
+        this.apiState = API_STATE_ENUM.REJECTED;
+        const { message } = this.$utils.getAxiosErrorResponse(error);
+        this.$toast.error(message);
       }
     }
   }

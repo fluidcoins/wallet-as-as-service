@@ -1,14 +1,14 @@
 <template>
-  <div>
+  <div v-if="canShow" class="mb-8">
     <table class="table-fixed w-full">
       <thead class="bg-whitesmoke">
         <tr>
           <th class="w-3/5 font-medium">Address</th>
-          <th class="w-25 font-medium">Address Type</th>
-          <th class="w-1/5 font-medium">Date</th>
+          <th class="w-2/5 font-medium">Address Type</th>
+          <th class="w-2/5 font-medium">Date</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-if="!loading">
         <tr
           class="cursor-pointer font-normal"
           v-for="address of addresses"
@@ -19,12 +19,13 @@
             <Clipboard class="ml-5" @click="copy(address.address)" />
           </td>
           <td class="text-sm">
-            {{ address.type }}
+            {{ address.coin.code }}
           </td>
-          <td class="text-lg">{{ address.date }}</td>
+          <td class="text-lg">{{ address.created_at | dateString}}</td>
         </tr>
       </tbody>
     </table>
+    <PaginationLoader class="mt-6" v-if="loading" />
   </div>
 </template>
 
@@ -43,7 +44,16 @@ export default {
       type: Array,
       default: () => [],
     },
+    loading: {
+      type: Boolean,
+      required: true
+    }
   },
+  computed: {
+    canShow() {
+      return this.loading || this.addresses.length
+    }
+  }
 }
 </script>
 
