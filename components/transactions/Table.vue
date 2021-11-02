@@ -11,9 +11,9 @@
       </thead>
       <tbody v-if="!loading">
         <tr
-          class="cursor-pointer"
           v-for="transaction of transactions"
           :key="transaction.id"
+          class="cursor-pointer"
         >
           <td class="text-lg">{{ transaction.amount | naira }}</td>
           <td class="text-secondary text-sm underline">{{ transaction.payment_link_id }}</td>
@@ -22,7 +22,7 @@
         </tr>
       </tbody>
     </table>
-    <PaginationLoader class="mt-6" v-if="loading" />
+    <PaginationLoader v-if="loading" class="mt-6" />
   </div>
 </template>
 

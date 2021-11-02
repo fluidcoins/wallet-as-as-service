@@ -1,6 +1,12 @@
 <template>
-  <div class="pt-10">
-    <h3 class="text-2xl mb-16">Transaction history</h3>
+  <div>
+    <div class="mt-14 flex justify-end">
+      <PlainButton
+        label="Generate new address"
+        @click="viewModal('newAddress')"
+      />
+    </div>
+    <h3 class="text-2xl mb-16 pt-10">Transaction history</h3>
     <select v-model="filter" class="select" @change="handleFilter">
       <option value="">All</option>
       <option v-for="filterOption in filterOptions" :key="filterOption" :value="filterOption.toLowerCase()">{{ filterOption }}</option>
@@ -24,17 +30,43 @@
         />
       </template>
     </template>
+
+    <Modal
+      :show="globalModalConfig.newAddress"
+      :width="600"
+      @close="hideModal('newAddress')"
+    >
+      <AddressForm @done="refresh" @close="hideModal('newAddress')" />
+    </Modal>
+
+    <Modal
+      :show="globalModalConfig.detail"
+      :width="600"
+      @close="hideModal('detail')"
+    >
+      <GeneratedAddress />
+    </Modal>
   </div>
 </template>
 
 <script>
 import Table from "~/components/transactions/Table";
 import { API_STATE_ENUM } from "~/services/constants"
+import ModalMixin from '~/mixins/modal'
+import Modal from '~/components/Modal'
+import PlainButton from '~/components/Button/PlainButton'
+import AddressForm from '~/components/addresses/AddressForm'
+import GeneratedAddress from '~/components/addresses/GeneratedAddress'
 
 export default {
   components: {
     Table,
+    Modal,
+    PlainButton,
+    AddressForm,
+    GeneratedAddress,
   },
+  mixins: [ModalMixin],
   layout: 'default',
   data(){
     return {
@@ -45,6 +77,10 @@ export default {
       filterOptions: ['Success', 'Pending', 'Expired', 'Overpaid', 'Underpaid'],
       meta: {},
       transactions: [],
+      globalModalConfig: {
+        newAddress: false,
+        detail: false,
+      },
     }
   },
   mounted() {
@@ -73,6 +109,9 @@ export default {
     handleFilter() {
       this.status = this.filter;
       this.fetchTransactions()
+    },
+    refresh() {
+      this.hideModal('newAddress')
     }
   }
 }

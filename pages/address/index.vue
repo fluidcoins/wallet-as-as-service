@@ -1,6 +1,13 @@
 <template>
-  <div class="pt-10">
-    <h3 class="text-2xl mb-16">Address</h3>
+  <div>
+    <div class="mt-14 flex justify-end">
+      <PlainButton
+        label="Generate new address"
+        @click="viewModal('newAddress')"
+      />
+    </div>
+    
+    <h3 class="text-2xl mb-16 pt-10">Address</h3>
     <select v-model="filter" class="select" @change="handleCoinChange">
       <option value="">All</option>
       <option v-for="currency in currencies" :key="currency.id" :value="currency.id">{{ currency.human_readable_name}}</option>
@@ -24,6 +31,22 @@
         />
       </template>
     </template>
+
+    <Modal
+      :show="globalModalConfig.newAddress"
+      :width="600"
+      @close="hideModal('newAddress')"
+    >
+      <AddressForm @done="refresh" @close="hideModal('newAddress')" />
+    </Modal>
+
+    <Modal
+      :show="globalModalConfig.detail"
+      :width="600"
+      @close="hideModal('detail')"
+    >
+      <GeneratedAddress />
+    </Modal>
   </div>
 </template>
 
@@ -31,13 +54,23 @@
 import {mapGetters, mapActions} from "vuex"
 import Table from "~/components/addresses/Table"
 import { API_STATE_ENUM } from "~/services/constants"
-import { CURRENCIES } from "~/services/getterTYpes";
+import { CURRENCIES } from "~/services/getterTypes";
 import { FETCH_CURRENCIES } from "~/services/actionTypes"
+import PlainButton from '~/components/Button/PlainButton'
+import ModalMixin from '~/mixins/modal'
+import Modal from '~/components/Modal'
+import AddressForm from '~/components/addresses/AddressForm'
+import GeneratedAddress from '~/components/addresses/GeneratedAddress'
 
 export default {
   components: {
     Table,
+    Modal,
+    PlainButton,
+    AddressForm,
+    GeneratedAddress
   },
+  mixins: [ModalMixin],
   layout: 'default',
   data(){
     return {
@@ -85,6 +118,10 @@ export default {
       }
     },
     handleCoinChange() {
+      this.fetchAddresses()
+    },
+    refresh() {
+      this.hideModal('newAddress')
       this.fetchAddresses()
     }
   }

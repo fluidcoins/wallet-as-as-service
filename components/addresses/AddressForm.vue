@@ -10,11 +10,11 @@
           <label for="cryto">Select Crypto</label>
           <select
             id="cryto"
-            :class="{ error: $v.form.crypto.$error }"
             v-model="$v.form.crypto.$model"
+            :class="{ error: $v.form.crypto.$error }"
           >
             <option value="" selected>Choose crypto</option>
-            <option :value="currency.code" v-for="currency in currencies" :key="currency.id">{{ currency.human_readable_name }}</option>
+            <option v-for="currency in currencies" :key="currency.id" :value="currency.code">{{ currency.human_readable_name }}</option>
           </select>
           <template v-if="$v.form.crypto.$error">
             <p class="caption text-error mt-2">crypto is required</p>
@@ -25,11 +25,11 @@
           <label for="network">Select Network</label>
           <select
             id="network"
-            :class="{ error: $v.form.network.$error }"
             v-model="$v.form.network.$model"
+            :class="{ error: $v.form.network.$error }"
           >
             <option value="" selected>Choose network</option>
-            <option :value="network" v-for="network in networks" :key="network">{{ network }}</option>
+            <option v-for="network in networks" :key="network" :value="network">{{ network }}</option>
           </select>
           <template v-if="$v.form.network.$error">
             <p class="caption text-error mt-2">network is required</p>
@@ -71,6 +71,13 @@ export default {
   components: {
     Button, 
   },
+  data() {
+    return {
+      API_STATE_ENUM,
+      apiState: API_STATE_ENUM.IDLE,
+      form: this.formFields()
+    }
+  },
   computed: {
     ...mapGetters([CURRENCIES]),
     networks() {
@@ -80,13 +87,6 @@ export default {
   },
   mounted() {
     this[FETCH_CURRENCIES]()
-  },
-  data() {
-    return {
-      API_STATE_ENUM,
-      apiState: API_STATE_ENUM.IDLE,
-      form: this.formFields()
-    }
   },
   validations: {
     form: {

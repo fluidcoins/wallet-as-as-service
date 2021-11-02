@@ -10,9 +10,9 @@
       </thead>
       <tbody v-if="!loading">
         <tr
-          class="cursor-pointer font-normal"
           v-for="address of addresses"
           :key="address.id"
+          class="cursor-pointer font-normal"
         >
           <td class="flex items-center text-sm">
             <span class="text-secondary underline">{{ address.address }}</span>
@@ -25,7 +25,7 @@
         </tr>
       </tbody>
     </table>
-    <PaginationLoader class="mt-6" v-if="loading" />
+    <PaginationLoader v-if="loading" class="mt-6" />
   </div>
 </template>
 
