@@ -1,5 +1,5 @@
 <template>
-  <button :type="type" class="w-full btn btn-primary" :class="{'btn-disabled': invalid}">
+  <button :type="type" class="w-full btn" :class="[`${$attrs.className ? $attrs.className : 'btn-primary'}`, invalid ? 'btn-disabled' : '']">
     <template v-if="!loading">
       {{ label }}
     </template>

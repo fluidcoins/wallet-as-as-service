@@ -1,30 +1,31 @@
 <template>
-  <div>
+  <div v-if="canShow" class="mb-8">
     <table class="table-fixed w-full">
       <thead class="bg-whitesmoke">
         <tr>
           <th class="w-3/5 font-medium">Address</th>
-          <th class="w-25 font-medium">Address Type</th>
-          <th class="w-1/5 font-medium">Date</th>
+          <th class="w-2/5 font-medium">Address Type</th>
+          <th class="w-2/5 font-medium">Date</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody v-if="!loading">
         <tr
-          class="cursor-pointer font-normal"
           v-for="address of addresses"
           :key="address.id"
+          class="cursor-pointer font-normal"
         >
           <td class="flex items-center text-sm">
             <span class="text-secondary underline">{{ address.address }}</span>
             <Clipboard class="ml-5" @click="copy(address.address)" />
           </td>
           <td class="text-sm">
-            {{ address.type }}
+            {{ address.coin.code }}
           </td>
-          <td class="text-lg">{{ address.date }}</td>
+          <td class="text-lg">{{ address.created_at | dateString}}</td>
         </tr>
       </tbody>
     </table>
+    <PaginationLoader v-if="loading" class="mt-6" />
   </div>
 </template>
 
@@ -43,7 +44,16 @@ export default {
       type: Array,
       default: () => [],
     },
+    loading: {
+      type: Boolean,
+      required: true
+    }
   },
+  computed: {
+    canShow() {
+      return this.loading || this.addresses.length
+    }
+  }
 }
 </script>
 

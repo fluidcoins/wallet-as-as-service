@@ -118,7 +118,7 @@
     } */
 
     label {
-      @apply text-black text-base mb-3;
+      @apply text-black text-base mb-2 block;
     }
 
     input, select, textarea {
@@ -134,8 +134,7 @@
       -moz-appearance: none;
       background-image: url('/images/down-caret.svg');
       background-repeat: no-repeat;
-      background-position-x: 87%;
-      background-position-y: 50%;
+      background-position: right 1rem center;
     }
     select.small{
       background-position-x: 80%;
