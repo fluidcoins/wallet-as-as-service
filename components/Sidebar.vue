@@ -35,11 +35,6 @@ export default {
           path: '/home',
           icon: 'Home',
         },
-        {
-          name: 'Address',
-          path: '/address',
-          icon: 'Address',
-        },
       ],
     }
   },

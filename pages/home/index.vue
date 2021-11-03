@@ -6,27 +6,28 @@
         @click="viewModal('newAddress')"
       />
     </div>
-    <h3 class="text-2xl mb-16 pt-10">Transaction history</h3>
-    <select v-model="filter" class="select" @change="handleFilter">
+    
+    <h3 class="text-2xl mb-16 pt-10">Address</h3>
+    <select v-model="filter" class="select" @change="handleCoinChange">
       <option value="">All</option>
-      <option v-for="filterOption in filterOptions" :key="filterOption" :value="filterOption.toLowerCase()">{{ filterOption }}</option>
+      <option v-for="currency in currencies" :key="currency.id" :value="currency.id">{{ currency.human_readable_name}}</option>
     </select>
-    <Table :transactions="transactions" :loading="apiState === API_STATE_ENUM.PENDING" @filter="handleFilter" />
+    <Table :addresses="addresses" :loading="apiState === API_STATE_ENUM.PENDING" />
 
     <template v-if="apiState === API_STATE_ENUM.RESOLVED">
-      <template v-if="transactions.length > 0">
+      <template v-if="addresses.length > 0">
         <Pagination
           class="mt-auto pb-12"
           :per-page="meta.per_page"
           :current-page="meta.page"
           :total="meta.total"
-          @update-page="fetchTransactions"
+          @update-page="fetchAddresses"
         />
       </template>
       <template v-else>
         <EmptyBoundary
-          title="No transactions yet"
-          description="You have no transactions yet"
+          title="No addresses yet"
+          description="You have no addresses yet"
         />
       </template>
     </template>
@@ -50,11 +51,14 @@
 </template>
 
 <script>
-import Table from "~/components/transactions/Table";
+import {mapGetters, mapActions} from "vuex"
+import Table from "~/components/addresses/Table"
 import { API_STATE_ENUM } from "~/services/constants"
+import { CURRENCIES } from "~/services/getterTypes";
+import { FETCH_CURRENCIES } from "~/services/actionTypes"
+import PlainButton from '~/components/Button/PlainButton'
 import ModalMixin from '~/mixins/modal'
 import Modal from '~/components/Modal'
-import PlainButton from '~/components/Button/PlainButton'
 import AddressForm from '~/components/addresses/AddressForm'
 import GeneratedAddress from '~/components/addresses/GeneratedAddress'
 
@@ -64,54 +68,61 @@ export default {
     Modal,
     PlainButton,
     AddressForm,
-    GeneratedAddress,
+    GeneratedAddress
   },
   mixins: [ModalMixin],
   layout: 'default',
   data(){
     return {
+      addresses: [],
+      filter: '',
       apiState: API_STATE_ENUM.IDLE,
       API_STATE_ENUM,
-      status: '',
-      filter: '',
-      filterOptions: ['Success', 'Pending', 'Expired', 'Overpaid', 'Underpaid'],
-      meta: {},
-      transactions: [],
       globalModalConfig: {
         newAddress: false,
-        detail: false,
-      },
+        detail: false
+      }
     }
   },
+  computed: {
+    ...mapGetters([
+      CURRENCIES
+    ])
+  },
   mounted() {
-    this.fetchTransactions();
+    this[FETCH_CURRENCIES]()
+    this.fetchAddresses()
   },
   methods: {
-    async fetchTransactions(params={}) {
-      if(this.status){
-        params.status = this.status
+    ...mapActions([
+      FETCH_CURRENCIES
+    ]),
+    async fetchAddresses(params={}) {
+      
+      if(this.filter) {
+        params.coin = this.filter
       }
 
       this.apiState = API_STATE_ENUM.PENDING;
 
-      try{
-        const { data } = await this.$api.transactions.all(params);
-        const {transactions, meta} = data;
-        this.transactions = transactions;
+      try {
+        const { data } = await this.$api.address.all(params);
+        const {addresses, meta} = data;
+        this.addresses = addresses;
         this.meta = meta.paging;
         this.apiState = API_STATE_ENUM.RESOLVED;
-      } catch(error){
+      }catch (error) {
         this.apiState = API_STATE_ENUM.REJECTED;
         const { message } = this.$utils.getAxiosErrorResponse(error);
         this.$toast.error(message);
       }
     },
-    handleFilter() {
-      this.status = this.filter;
-      this.fetchTransactions()
+    handleCoinChange() {
+      this.fetchAddresses()
     },
     refresh() {
       this.hideModal('newAddress')
+      this.fetchAddresses()
     }
   }
 }

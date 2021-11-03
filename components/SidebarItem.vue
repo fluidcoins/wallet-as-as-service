@@ -16,7 +16,6 @@ export default {
   name: 'SidebarItem',
   components: {
     Home: () => import('~/assets/svg/home.svg'),
-    Address: () => import('~/assets/svg/address.svg'),
   },
   data() {
     return {}
