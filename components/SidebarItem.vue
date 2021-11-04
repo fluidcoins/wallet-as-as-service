@@ -16,10 +16,6 @@ export default {
   name: 'SidebarItem',
   components: {
     Home: () => import('~/assets/svg/home.svg'),
-    Address: () => import('~/assets/svg/address.svg'),
-  },
-  data() {
-    return {}
   },
   props: {
     name: {
@@ -36,7 +32,11 @@ export default {
     },
     index: {
       type: Number,
+      required: true
     },
+  },
+  data() {
+    return {}
   },
   computed: {
     icon() {

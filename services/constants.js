@@ -4,3 +4,5 @@ export const API_STATE_ENUM  = {
   REJECTED: 'rejected',
   RESOLVED: 'resolved'
 }
+
+export const AVAILABLE_NETWORKS = ['trc20',  'bsc',  'erc20',  'matic']

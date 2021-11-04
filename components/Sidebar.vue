@@ -4,12 +4,12 @@
       <SidebarItem
         v-for="(menu, i) in menuItems"
         :key="menu.name"
-        :iconType="menu.icon"
+        :icon-type="menu.icon"
         :path="menu.path"
         :name="menu.name"
         :index="i"
       />
-      <button @click="_logout" class="px-6 py-3 rounded w-full flex items-center justify-center">
+      <button class="px-6 py-3 rounded w-full flex items-center justify-center" @click="_logout">
         <Logout />
         <span class="ml-6 text-xl font-medium">Logout</span>
       </button>
@@ -34,11 +34,6 @@ export default {
           name: 'Home',
           path: '/home',
           icon: 'Home',
-        },
-        {
-          name: 'Address',
-          path: '/address',
-          icon: 'Address',
         },
       ],
     }

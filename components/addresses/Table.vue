@@ -13,10 +13,11 @@
           v-for="address of addresses"
           :key="address.id"
           class="cursor-pointer font-normal"
+          @click="$router.push(`/address/${address.reference}`)"
         >
           <td class="flex items-center text-sm">
             <span class="text-secondary underline">{{ address.address }}</span>
-            <Clipboard class="ml-5" @click="copy(address.address)" />
+            <Clipboard class="ml-5" @click.stop="copy(address.address)" />
           </td>
           <td class="text-sm">
             {{ address.coin.code }}

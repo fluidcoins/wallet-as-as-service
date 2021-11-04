@@ -27,3 +27,11 @@ Vue.filter('naira', (amountInKobo) => {
     currency: 'NGN',
   }).format(amount);
 });
+
+Vue.filter('dateTimeString', function (value) {
+  if (!value) {
+    return 'No date';
+  }
+
+  return format(new Date(value), "do MMMM, yyyy 'at' hh':'mm a");
+});
