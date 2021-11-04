@@ -17,9 +17,6 @@ export default {
   components: {
     Home: () => import('~/assets/svg/home.svg'),
   },
-  data() {
-    return {}
-  },
   props: {
     name: {
       type: String,
@@ -35,7 +32,11 @@ export default {
     },
     index: {
       type: Number,
+      required: true
     },
+  },
+  data() {
+    return {}
   },
   computed: {
     icon() {

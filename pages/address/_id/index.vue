@@ -9,7 +9,7 @@
           <p class="mt-2 text-black">Created: {{ address.created_at | dateTimeString}}</p>
         </div>
         <div>
-          <CoinBadge class="mr-2" :coinType="address.coin && address.coin.code || 'Not Available'" />
+          <CoinBadge class="mr-2" :coin-type="address.coin && address.coin.code || 'Not Available'" />
         </div>
       </div>
       <div class="pb-6 flex justify-between">
@@ -74,17 +74,16 @@
 </template>
 
 <script>
-import CoinBadge from '~/components/Transactions/CoinBadge'
+import CoinBadge from '~/components/transactions/CoinBadge'
 import BackNavigation from "~/components/BackNavigation";
 import Copy from '~/assets/svg/copy.svg'
 import Tabs from '~/components/Tabs'
-import Table from '~/components/Addresses/AddressTransactionTable'
+import Table from '~/components/addresses/AddressTransactionTable'
 import { API_STATE_ENUM } from "~/services/constants";
 import ClipboardCopyMixin from "~/mixins/copy-to-clipboard";
 
   export default {
     name: 'AddressDetailPage',
-    mixins: [ ClipboardCopyMixin],
     components: {
       CoinBadge,
       BackNavigation,
@@ -92,6 +91,7 @@ import ClipboardCopyMixin from "~/mixins/copy-to-clipboard";
       Tabs,
       Table
     },
+    mixins: [ ClipboardCopyMixin],
     data() {
       return {
         API_STATE_ENUM,
