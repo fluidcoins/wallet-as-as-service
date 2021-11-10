@@ -53,10 +53,7 @@ export default {
       }
     },
     isActive() {
-      return (
-        this.$route.name &&
-        this.$route.name.toLowerCase().includes(this.iconType.toLowerCase())
-      )
+      return this.$route.name;
     },
   },
 }
