@@ -7,7 +7,7 @@
 $ yarn install
 
 # serve with hot reload at localhost:3000
-$ yarn dev
+$ BASE_URL=https://devapi.fluidcoins.com/v1 yarn dev
 
 # build for production and launch server
 $ yarn build
